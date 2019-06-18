@@ -12,4 +12,4 @@ before_install:
   
 #travis will watch the return codes.  any value other than zero indicates failure
 script:
-  - docker run mikeaocdockerid/docker-react npm run test -- --coverage
+  - docker run -e CI=true mikeaocdockerid/docker-react npm run test -- --watchAll=false
