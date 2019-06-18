@@ -1,0 +1,15 @@
+sudo: required  
+#super user permisions required
+
+
+#travis CI will load docker
+services:
+  - docker  
+
+#travis CI will build the Dockerfile.dev and tag the image generated  mikeaocdockerid/docker-react (could be anything but this is good convention)
+before_install:
+  - docker build -t mikeaocdockerid/docker-react -f Dockerfile.dev .
+  
+#travis will watch the return codes.  any value other than zero indicates failure
+script:
+  - docker run mikeaocdockerid/docker-react npm run test -- --coverage
