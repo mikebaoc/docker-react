@@ -13,3 +13,21 @@ before_install:
 #travis will watch the return codes.  any value other than zero indicates failure
 script:
   - docker run -e CI=true mikeaocdockerid/docker-react npm run test -- --watchAll=false
+
+#travis deployment..elasticbeanstalk is one of some understood destinations (AWS - elastic bean stalk)
+# my AWS url is DockerReact-env.huf2a2wxts.us-east-2.elasticbeanstalk.com the region is us-east-2
+# All Applications  docker-react  DockerReact-env  Environment ID: e-n8erwchta7, URL: DockerReact-env.huf2a2wxts.us-east-2.elasticbeanstalk.com 
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-us-east-2-349679454368"  #AWS -- Services --search S3 scalable storage
+  bucket_path:"docker-react"
+  on:
+    branch: master   #only deploy when git master branch changed
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+ 
+  
