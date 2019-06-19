@@ -19,7 +19,7 @@ RUN npm run build
 
 
 
-#the from statement indicates that the previous FROM is done
+#the from statement indicates that the previous FROM is done.  nginx automatically will start
 FROM nginx
 
 COPY --from=builder /app/build /usr/share/nginx/html
