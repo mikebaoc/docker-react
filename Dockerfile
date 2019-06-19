@@ -21,7 +21,7 @@ RUN npm run build
 
 #the from statement indicates that the previous FROM is done.  nginx automatically will start
 FROM nginx
-
+EXPOSE 80
 COPY --from=builder /app/build /usr/share/nginx/html
 # copies from the previous alpine build directory /app/build to
 # this new image build  to /usr/share/nginx/html  (this directory is from the nginx documentation) dir
