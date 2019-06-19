@@ -25,8 +25,9 @@ deploy:
   bucket_name: "elasticbeanstalk-us-east-2-349679454368"  #AWS -- Services --search S3 scalable storage
   bucket_path:"docker-react"
   on:
-    branch: master   #only deploy when git master branch changed
-  access_key_id: $AWS_ACCESS_KEY
+    branch: master   
+    #only deploy when git master branch changed
+  access_key_id: "$AWS_ACCESS_KEY"
   secret_access_key:
     secure: "$AWS_SECRET_KEY"
  
